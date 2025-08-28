@@ -1,0 +1,2864 @@
+
+"#base" "base_player.theater"
+"#base" "default_weapon.theater"
+"#base" "default_weapon_upgrades.theater"
+"#base" "base_common_ammo.theater"
+"#base" "default_gear.theater"
+
+"theater"
+{
+	"cvars"
+	{
+		"mp_supply_token_base"						"14"
+		"mp_supply_token_max"						"14"
+		"sv_suppress_steam_score"					"1"
+	}
+
+	"core"
+	{
+		"precache"
+		{
+			"sounds"								"scripts/ins_sounds_weapons.txt"
+			"sounds"								"scripts/ins_sounds_cues.txt"
+			"sounds"								"scripts/ins_sounds_voice.txt"
+			"sounds"								"scripts/ins_sounds_responses_security.txt"
+			"sounds"								"scripts/ins_sounds_responses_insurgent.txt"
+			"sounds"								"scripts/ins_sounds_hq.txt"
+		}
+	}
+
+	////////////////////////////////////////////////////////////////
+	// Scoring
+	////////////////////////////////////////////////////////////////
+
+	"player_settings"
+	{
+		"scoring"
+		{
+			"kill"									"40"
+			"kill_offensive"						"60"
+			"kill_defensive"						"60"
+			"kill_headshot_bonus"					"10"
+			"kill_savior"							"50"
+			"kill_bonus_domination"					"10"
+			"kill_bonus_revenge"					"0"
+			"assist"								"30"
+
+			"obj_captured"							"50"
+			"obj_neutralized"						"0"
+			"obj_reset"								"0"
+			"obj_capture_tick"						"0"
+			"obj_reset_tick"						"0"
+			"cache_destroyed"						"0"
+			"intel_captured"						"0"
+			"vip_killed"							"0"
+			"safehouse_secured"						"0"
+			"wave_complete"							"0"
+		}
+
+		"speed"
+		{
+			"frac_side_move"						"0.60"
+			"frac_back_move"						"0.65"
+			"frac_side_step"						"0.60"
+			"frac_speed_water"						"0.72"
+			"speed_prone"							"54"
+			"speed_crouch_walk"						"76"
+			"speed_crouch_run"						"108"
+			"speed_walk"							"130"
+			"speed_run"								"170"
+			"speed_sprint"							"288"
+		}
+
+		"slide"
+		{
+			"min_sprint_time"						"1.2"
+			"post_sprint_grace"						"0.0"
+
+			"DistanceByWeight"
+			{
+				"60"								"0.5"
+				"640"								"0.45"
+			}
+
+			"SpeedByWeight"
+			{
+				"60"								"240"
+				"640"								"180"
+			}
+		}
+
+		"stamina"
+		{
+			"stamina_regain"						"2.50"
+			"stamina_sprint_take"					"0"
+			"stamina_jump_take"						"3"
+			"stamina_dmg_take"						"15"
+
+			"land_viewpunch_minvel"					"0"
+			"land_viewpunch_basepitch"				"0.0"
+			"land_viewpunch_jumppitch"				"0.0"
+			"land_viewpunch_landpitch"				"0.0"
+			"land_viewpunch_maxangle"				"0.0"
+			"land_viewpunch_freeaim"				"0.0"
+			"land_viewpunch_viewkick"				"0.0"
+		}
+
+		"damage"
+		{
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"5.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"1.00"
+				"HITGROUP_RIGHTLEG"					"1.00"
+			}
+		}
+
+		"suppression"
+		{
+			"suppression_resistance"				"0.15"
+			"suppression_recovery_rate"				"40"
+		}
+	}
+
+	////////////////////////////////////////////////////////////////
+	// Gear
+	////////////////////////////////////////////////////////////////
+
+	"player_gear"
+	{
+		"sec_light_armor"
+		{
+			"class_restricted"						"1"
+ 		}
+
+		"ins_light_armor"
+		{
+			"class_restricted"						"1"
+ 		}
+
+		"sec_heavy_armor"
+		{
+			"print_name"							"#gear_heavy_armor"
+			"print_desc"							"#gear_heavy_armor_desc"
+			"gear_slot"								"armor"
+			"gear_cost"								"3"
+			"gear_weight"							"32"
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"0.70"
+				"HITGROUP_STOMACH"					"0.70"
+				"HITGROUP_LEFTARM"					"0.70"
+				"HITGROUP_RIGHTARM"					"0.70"
+				"HITGROUP_LEFTLEG"					"0.70"
+				"HITGROUP_RIGHTLEG"					"0.70"
+			}
+
+			"team_access"							"security"
+ 		}
+
+		"ins_heavy_armor"
+		{
+			"print_name"							"#gear_heavy_armor"
+			"print_desc"							"#gear_heavy_armor_desc"
+			"gear_slot"								"armor"
+			"gear_cost"								"3"
+			"gear_weight"							"32"
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"0.70"
+				"HITGROUP_STOMACH"					"0.70"
+				"HITGROUP_LEFTARM"					"0.70"
+				"HITGROUP_RIGHTARM"					"0.70"
+				"HITGROUP_LEFTLEG"					"0.70"
+				"HITGROUP_RIGHTLEG"					"0.70"
+			}
+
+			"team_access"							"insurgent"
+ 		}
+
+		"sec_chest_rig"
+		{
+			"print_name"							"#gear_chest_rig"
+			"print_desc"							"Extra grenade slot"
+			"gear_slot"								"vest"
+			"gear_cost"								"0"
+			"gear_weight"							"0"
+
+			"extra_ammo"
+			{
+				"primary"							"0"
+				"secondary"							"0"
+
+				"explosive"
+				{
+					"1"								"0"
+				}
+			}
+
+			"weapon_slots"
+			{
+				"explosive"							"1"
+			}
+
+			"team_access"							"security"
+		}
+
+		"ins_chest_rig"
+		{
+			"print_name"							"#gear_chest_rig"
+			"print_desc"							"Extra grenade slot"
+			"gear_slot"								"vest"
+			"gear_cost"								"0"
+			"gear_weight"							"0"
+
+			"extra_ammo"
+			{
+				"primary"							"0"
+				"secondary"							"0"
+
+				"explosive"
+				{
+					"1"								"0"
+				}
+			}
+
+			"weapon_slots"
+			{
+				"explosive"							"1"
+			}
+
+			"team_access"							"insurgent"
+		}
+
+		"sec_chest_carrier"
+		{
+			"print_name"							"#gear_chest_carrier"
+			"print_desc"							"Two extra primary and secondary magazines, one extra grenade slot"
+			"gear_slot"								"vest"
+			"gear_cost"								"1"
+			"gear_weight"							"16"
+
+			"extra_ammo"
+			{
+				"primary"							"2"
+				"secondary"							"2"
+
+				"explosive"
+				{
+					"1"								"0"
+				}
+			}
+
+			"weapon_slots"
+			{
+				"explosive"							"1"
+			}
+
+			"player_model_bodygroups"
+			{
+				"kit"								"2"
+				"backpack"							"1"
+			}
+
+			"team_access"							"security"
+		}
+
+		"ins_chest_carrier"
+		{
+			"print_name"							"#gear_chest_carrier"
+			"print_desc"							"Two extra primary and secondary magazines, one extra grenade slot"
+			"gear_slot"								"vest"
+			"gear_cost"								"1"
+			"gear_weight"							"16"
+
+			"extra_ammo"
+			{
+				"primary"							"2"
+				"secondary"							"2"
+
+				"explosive"
+				{
+					"1"								"0"
+				}
+			}
+
+			"weapon_slots"
+			{
+				"explosive"							"1"
+			}
+
+			"player_model_bodygroups"
+			{
+				"kit"								"2"
+				"backpack"							"1"
+			}
+
+			"team_access"							"insurgent"
+		}
+	}
+
+	////////////////////////////////////////////////////////////////
+	// Ammo
+	////////////////////////////////////////////////////////////////
+
+	"ammo"
+	{
+		////////////////////////////////////////////////////////////////
+		// M9, Makarov, M45, M1911, Model10
+		////////////////////////////////////////////////////////////////
+
+		"esgl_pistol"
+		{
+			"import"								"default"
+			"SuppressionIncrement"					"20"
+			"brass_model"							"models/weapons/shells/9x19.mdl"
+
+			"Damage"
+			{
+				"1"									"60"
+				"1575"								"36"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"0.45"
+			}
+
+			"PenetrationPower"
+			{
+				"10"								"600"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.75"
+				"HITGROUP_RIGHTLEG"					"0.75"
+			}
+		}
+
+		"esgl_pistol_ap"
+		{
+			"import"								"esgl_pistol"
+
+			"Damage"
+			{
+				"1"									"80"
+				"1575"								"48"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"0.50"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.80"
+				"HITGROUP_RIGHTLEG"					"0.80"
+			}
+		}
+
+		"esgl_pistol_15"
+		{
+			"import"								"esgl_pistol"
+			"magsize"								"15"
+		}
+
+		"esgl_pistol_ap_15"
+		{
+			"import"								"esgl_pistol_ap"
+			"magsize"								"15"
+
+			"tracer_type"							"none"
+		}
+
+		"esgl_pistol_6"
+		{
+			"import"								"esgl_pistol"
+			"magsize"								"6"
+			"carry"									"48"
+			"flags_clear"							"AMMO_USE_MAGAZINES"
+		}
+
+		"esgl_pistol_ap_6"
+		{
+			"import"								"esgl_pistol_ap"
+			"magsize"								"6"
+			"carry"									"48"
+			"flags_clear"							"AMMO_USE_MAGAZINES"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M1911, M45, UMP45
+		////////////////////////////////////////////////////////////////
+
+		"esgl_smg_25"
+		{
+			"import"								"default"
+			"magsize"								"25"
+			"SuppressionIncrement"					"30"
+			"brass_model"							"models/weapons/shells/45apc.mdl"
+
+			"Damage"
+			{
+				"1"									"60"
+				"2625"								"36"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"0.60"
+			}
+
+			"PenetrationPower"
+			{
+				"10"								"600"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.75"
+				"HITGROUP_RIGHTLEG"					"0.75"
+			}
+		}
+
+		"esgl_smg_ap_25"
+		{
+			"import"								"esgl_smg_25"
+
+			"Damage"
+			{
+				"1"									"80"
+				"2625"								"48"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"0.65"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.80"
+				"HITGROUP_RIGHTLEG"					"0.80"
+			}
+
+			"tracer_frequency"						"4"
+			"tracer_type"							"whiz_with_line"
+			"tracer_lowammo"						"0"
+		}
+
+		"esgl_smg_32"
+		{
+			"import"								"esgl_smg_25"
+			"magsize"								"32"
+		}
+
+		"esgl_smg_ap_32"
+		{
+			"import"								"esgl_smg_ap_25"
+			"magsize"								"32"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M4A1, AKS74U
+		////////////////////////////////////////////////////////////////
+
+		"esgl_carbine_30"
+		{
+			"import"								"default"
+			"magsize"								"30"
+			"brass_model"							"models/weapons/shells/556x45.mdl"
+			"SuppressionIncrement"					"50"
+
+			"Damage"
+			{
+				"1"									"68"
+				"3150"								"41"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"0.80"
+				"600"								"0.20"
+			}
+
+			"PenetrationPower"
+			{
+				"10"								"1200"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.66"
+				"HITGROUP_RIGHTLEG"					"0.66"
+			}
+		}
+
+		"esgl_carbine_ap_30"
+		{
+			"import"								"esgl_carbine_30"
+
+			"Damage"
+			{
+				"1"									"82"
+				"3150"								"49"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"1.00"
+				"600"								"0.30"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.89"
+				"HITGROUP_RIGHTLEG"					"0.89"
+			}
+
+			"tracer_frequency"						"4"
+			"tracer_type"							"whiz_with_line"
+			"tracer_lowammo"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M16A4, AKM
+		////////////////////////////////////////////////////////////////
+
+		"esgl_assault_rifle_30"
+		{
+			"import"								"esgl_carbine_30"
+			"brass_model"							"models/weapons/shells/762x39.mdl"
+			"SuppressionIncrement"					"60"
+
+			"Damage"
+			{
+				"1"									"68"
+				"525"								"68"
+				"4200"								"41"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"1.00"
+				"600"								"0.30"
+			}
+
+			"PenetrationPower"
+			{
+				"10"								"1200"
+			}
+		}
+
+		"esgl_assault_rifle_ap_30"
+		{
+			"import"								"esgl_carbine_ap_30"
+			"brass_model"							"models/weapons/shells/762x39.mdl"
+			"SuppressionIncrement"					"60"
+
+			"Damage"
+			{
+				"1"									"82"
+				"525"								"82"
+				"4200"								"49"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"1.00"
+				"600"								"0.40"
+			}
+
+			"PenetrationPower"
+			{
+				"10"								"1200"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// L1A1, SKS
+		////////////////////////////////////////////////////////////////
+
+		"esgl_battle_rifle_20"
+		{
+			"import"								"default"
+			"magsize"								"20"
+			"SuppressionIncrement"					"90"
+			"brass_model"							"models/weapons/shells/762x51.mdl"
+
+			"Damage"
+			{
+				"1"									"75"
+				"2100"								"75"
+				"5250"								"45"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"1.00"
+				"600"								"0.40"
+			}
+
+			"PenetrationPower"
+			{
+				"10"								"1200"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.80"
+				"HITGROUP_RIGHTLEG"					"0.80"
+			}
+		}
+
+		"esgl_battle_rifle_ap_20"
+		{
+			"import"								"esgl_battle_rifle_20"
+
+			"Damage"
+			{
+				"1"									"95"
+				"2100"								"95"
+				"5250"								"57"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"1.00"
+				"600"								"0.60"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.95"
+				"HITGROUP_RIGHTLEG"					"0.95"
+			}
+
+			"tracer_frequency"						"4"
+			"tracer_type"							"whiz_with_line"
+			"tracer_lowammo"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M40A1, Mosin
+		////////////////////////////////////////////////////////////////
+
+		"esgl_sniper_rifle"
+		{
+			"import"								"default"
+			"magsize"								"5"
+			"carry"									"120"
+			"flags_clear"							"AMMO_USE_MAGAZINES"
+			"SuppressionIncrement"					"90"
+			"brass_model"							"models/weapons/shells/762x51.mdl"
+
+			"Damage"
+			{
+				"10"								"140"
+				"7000"								"140"
+				"9000"								"84"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"1.00"
+				"600"								"1.00"
+				"1200"								"0.50"
+			}
+
+			"PenetrationPower"
+			{
+				"10"								"1800"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.61"
+				"HITGROUP_RIGHTLEG"					"0.61"
+			}
+		}
+
+		"esgl_sniper_rifle_ap"
+		{
+			"import"								"esgl_sniper_rifle"
+
+			"Damage"
+			{
+				"10"								"160"
+				"7000"								"160"
+				"9000"								"96"
+			}
+
+			"DamageHitgroups"
+			{
+				"HITGROUP_HEAD"						"1.00"
+				"HITGROUP_CHEST"					"1.00"
+				"HITGROUP_STOMACH"					"1.00"
+				"HITGROUP_LEFTARM"					"1.00"
+				"HITGROUP_RIGHTARM"					"1.00"
+				"HITGROUP_LEFTLEG"					"0.92"
+				"HITGROUP_RIGHTLEG"					"0.92"
+			}
+
+			"PenetrationDamage"
+			{
+				"0"									"1.00"
+				"200"								"1.00"
+				"600"								"1.00"
+				"1200"								"0.80"
+			}
+
+			"tracer_frequency"						"1"
+			"tracer_type"							"whiz_with_line"
+			"tracer_lowammo"						"0"
+		}
+	}
+
+	////////////////////////////////////////////////////////////////
+	// Explosives
+	////////////////////////////////////////////////////////////////
+
+	"explosives"
+	{
+		"grenade_m18"
+		{
+			"Cookable"								"1"
+			"FuseTime"								"2"
+		}
+
+		"grenade_m84"
+		{
+			"Cookable"								"0"
+			"DetonateDamageRadius"					"900"
+			"DetonateFlashDuration"					"9.0"
+			"DetonatePenetrationRadius"				"300"
+		}
+
+		"grenade_m67"
+		{
+			"DetonateDamage"						"175"
+			"DetonateDamageRadius"					"420"
+		}
+
+		"grenade_f1"
+		{
+			"DetonateDamage"						"175"
+			"DetonateDamageRadius"					"420"
+		}
+
+		"grenade_anm14"
+		{
+			"FuseTime"								"0"
+			"Cookable"								"0"
+			"ImpactDetonation"						"1"
+			"UseVPhysics"							"0"
+			"Elasticity"							"0"
+
+			"DetonatePenetrationRadius"				"0"
+			"DetonateDamageRadius"					"180"
+			"DetonateDamage"						"28"
+			"AreaDamageTime"						"10"
+			"AreaDamageFrequency"					"0.3"
+			"AreaDamageMinRadius"					"180"
+			"AreaDamageMaxRadius"					"260"
+			"AreaDamageGrowSpeed"					"9"
+			"AreaDamageAmount"						"28"
+
+			"particles"
+			{
+				"DetonateParticle"					"ins_thermite_explosion"
+				"DetonateWaterParticle"				"ins_thermite_explosion"
+				"TrailParticle"						"molotov_trail"
+				"BroadcastAll"						"1"
+				"FollowOrigin"						"1"
+				"NormalUp"							"1"
+			}
+		}
+
+		"grenade_molotov"
+		{
+			"DetonatePenetrationRadius"				"0"
+			"DetonateDamageRadius"					"180"
+			"DetonateDamage"						"28"
+			"AreaDamageTime"						"10"
+			"AreaDamageFrequency"					"0.3"
+			"AreaDamageMinRadius"					"180"
+			"AreaDamageMaxRadius"					"260"
+			"AreaDamageGrowSpeed"					"9"
+			"AreaDamageAmount"						"28"
+		}
+	}
+
+	////////////////////////////////////////////////////////////////
+	// Weapons
+	////////////////////////////////////////////////////////////////
+
+	"weapons"
+	{
+		////////////////////////////////////////////////////////////////
+		// Knives
+		////////////////////////////////////////////////////////////////
+
+		"weapon_kabar"
+		{
+			"print_name"							"Ka-Bar"
+
+			"melee"
+			{
+				"MeleeRange"						"100"
+				"MeleeDamage"						"200"
+				"MeleeDamageBehindBonus"			"200"
+				"MeleeDamageType"					"DMG_SLASH"
+			}
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"1"
+			}
+		}
+
+		"weapon_gurkha"
+		{
+			"melee"
+			{
+				"MeleeRange"						"100"
+				"MeleeDamage"						"200"
+				"MeleeDamageBehindBonus"			"200"
+				"MeleeDamageType"					"DMG_SLASH"
+			}
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"1"
+			}
+		}
+
+		"weapon_goldenknife"
+		{
+			"import"								"weapon_base"
+			"weapon_class"							"melee"
+			"weapon_type"							"melee"
+			"print_name"							"Golden Knife"
+			"view_model"							"models/weapons/v_goldenknife.mdl"
+			"world_model"							"models/weapons/w_goldenknife.mdl"
+			"weapon_slot"							"melee"
+			"act_table"								"knife"
+			"weapon_weight"							"1"
+			"weapon_cost"							"0"
+			"class_restricted"						"0"
+			"barrel_length"							"-1"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"invalid"
+				"clip_max_rounds"					"-1"
+				"clip_default"						"0"
+			}
+
+			"sounds"
+			{
+				"shot_single"						"Weapon_Knife.Single"
+				"melee_hit"							"Weapon_Knife.Melee_Hit"
+				"melee_hit_world"					"Weapon_Knife.Melee_HitWorld"
+			}
+
+			"melee"
+			{
+				"MeleeRange"						"100"
+				"MeleeDamage"						"200"
+				"MeleeDamageBehindBonus"			"200"
+				"MeleeDamageType"					"DMG_SLASH"
+
+				"SwingAttacks"
+				{
+					"slash1"
+					{
+						"Activity"					"ACT_VM_HITCENTER"
+						"PlayerAtivity"				"ACT_SHOOT_E2W_BAT"
+						"PlayerActivityIdle"		"ACT_SHOOT_E2W_IDLE_BAT"
+						"StartTime"					"0.1"
+						"EndTime"					"0.34"
+						"Duration"					"0.9"
+						"StartDirection"			"E"
+						"EndDirection"				"W"
+						"ForceDirection"			"15 -40 0"
+					}
+				}
+			}
+
+			"player_restrictions"
+			{
+				"allow_lean"						"1"
+				"allow_sprint"						"1"
+				"allow_jump"						"1"
+				"allow_sway"						"1"
+			}
+
+			"recoil"
+			{
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.1"
+			}
+
+			"team_access"							"security, insurgent"
+		}
+
+		"weapon_kabarfade"
+		{
+			"import"								"weapon_base"
+			"weapon_class"							"melee"
+			"weapon_type"							"melee"
+			"print_name"							"Ka-Bar | Fade"
+			"view_model"							"models/weapons/v_kabarfade.mdl"
+			"world_model"							"models/weapons/w_kabarfade.mdl"
+			"weapon_slot"							"melee"
+			"act_table"								"knife"
+			"weapon_weight"							"1"
+			"weapon_cost"							"0"
+			"class_restricted"						"0"
+			"barrel_length"							"-1"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"invalid"
+				"clip_max_rounds"					"-1"
+				"clip_default"						"0"
+			}
+
+			"sounds"
+			{
+				"shot_single"						"Weapon_Knife.Single"
+				"melee_hit"							"Weapon_Knife.Melee_Hit"
+				"melee_hit_world"					"Weapon_Knife.Melee_HitWorld"
+			}
+
+			"melee"
+			{
+				"MeleeRange"						"100"
+				"MeleeDamage"						"200"
+				"MeleeDamageBehindBonus"			"200"
+				"MeleeDamageType"					"DMG_SLASH"
+
+				"SwingAttacks"
+				{
+					"slash1"
+					{
+						"Activity"					"ACT_VM_HITCENTER"
+						"PlayerAtivity"				"ACT_SHOOT_E2W_BAT"
+						"PlayerActivityIdle"		"ACT_SHOOT_E2W_IDLE_BAT"
+						"StartTime"					"0.1"
+						"EndTime"					"0.34"
+						"Duration"					"0.9"
+						"StartDirection"			"E"
+						"EndDirection"				"W"
+						"ForceDirection"			"15 -40 0"
+					}
+				}
+			}
+
+			"player_restrictions"
+			{
+				"allow_lean"						"1"
+				"allow_sprint"						"1"
+				"allow_jump"						"1"
+				"allow_sway"						"1"
+			}
+
+			"recoil"
+			{
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.1"
+			}
+
+			"team_access"							"security, insurgent"
+		}
+
+		"weapon_kabarnebula"
+		{
+			"import"								"weapon_base"
+			"weapon_class"							"melee"
+			"weapon_type"							"melee"
+			"print_name"							"Ka-Bar | Nebula"
+			"view_model"							"models/weapons/v_kabarnebula.mdl"
+			"world_model"							"models/weapons/w_kabarnebula.mdl"
+			"weapon_slot"							"melee"
+			"act_table"								"knife"
+			"weapon_weight"							"1"
+			"weapon_cost"							"0"
+			"class_restricted"						"0"
+			"barrel_length"							"-1"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"invalid"
+				"clip_max_rounds"					"-1"
+				"clip_default"						"0"
+			}
+
+			"sounds"
+			{
+				"shot_single"						"Weapon_Knife.Single"
+				"melee_hit"							"Weapon_Knife.Melee_Hit"
+				"melee_hit_world"					"Weapon_Knife.Melee_HitWorld"
+			}
+
+			"melee"
+			{
+				"MeleeRange"						"100"
+				"MeleeDamage"						"200"
+				"MeleeDamageBehindBonus"			"200"
+				"MeleeDamageType"					"DMG_SLASH"
+
+				"SwingAttacks"
+				{
+					"slash1"
+					{
+						"Activity"					"ACT_VM_HITCENTER"
+						"PlayerAtivity"				"ACT_SHOOT_E2W_BAT"
+						"PlayerActivityIdle"		"ACT_SHOOT_E2W_IDLE_BAT"
+						"StartTime"					"0.1"
+						"EndTime"					"0.34"
+						"Duration"					"0.9"
+						"StartDirection"			"E"
+						"EndDirection"				"W"
+						"ForceDirection"			"15 -40 0"
+					}
+				}
+			}
+
+			"player_restrictions"
+			{
+				"allow_lean"						"1"
+				"allow_sprint"						"1"
+				"allow_jump"						"1"
+				"allow_sway"						"1"
+			}
+
+			"recoil"
+			{
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.1"
+			}
+
+			"team_access"							"security, insurgent"
+		}
+
+		"weapon_kabarspooky"
+		{
+			"import"								"weapon_base"
+			"weapon_class"							"melee"
+			"weapon_type"							"melee"
+			"print_name"							"Ka-Bar | Spooky"
+			"view_model"							"models/weapons/v_kabarspooky.mdl"
+			"world_model"							"models/weapons/w_kabarspooky.mdl"
+			"weapon_slot"							"melee"
+			"act_table"								"knife"
+			"weapon_weight"							"1"
+			"weapon_cost"							"0"
+			"class_restricted"						"0"
+			"barrel_length"							"-1"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"invalid"
+				"clip_max_rounds"					"-1"
+				"clip_default"						"0"
+			}
+
+			"sounds"
+			{
+				"shot_single"						"Weapon_Knife.Single"
+				"melee_hit"							"Weapon_Knife.Melee_Hit"
+				"melee_hit_world"					"Weapon_Knife.Melee_HitWorld"
+			}
+
+			"melee"
+			{
+				"MeleeRange"						"100"
+				"MeleeDamage"						"200"
+				"MeleeDamageBehindBonus"			"200"
+				"MeleeDamageType"					"DMG_SLASH"
+
+				"SwingAttacks"
+				{
+					"slash1"
+					{
+						"Activity"					"ACT_VM_HITCENTER"
+						"PlayerAtivity"				"ACT_SHOOT_E2W_BAT"
+						"PlayerActivityIdle"		"ACT_SHOOT_E2W_IDLE_BAT"
+						"StartTime"					"0.1"
+						"EndTime"					"0.34"
+						"Duration"					"0.9"
+						"StartDirection"			"E"
+						"EndDirection"				"W"
+						"ForceDirection"			"15 -40 0"
+					}
+				}
+			}
+
+			"player_restrictions"
+			{
+				"allow_lean"						"1"
+				"allow_sprint"						"1"
+				"allow_jump"						"1"
+				"allow_sway"						"1"
+			}
+
+			"recoil"
+			{
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.1"
+			}
+
+			"team_access"							"security, insurgent"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Grenades
+		////////////////////////////////////////////////////////////////
+
+		"weapon_m203_smoke"
+		{
+			"weapon_cost"							"1"
+			"weapon_weight"							"0"
+		}
+
+		"weapon_gp25_smoke"
+		{
+			"weapon_cost"							"1"
+			"weapon_weight"							"0"
+		}
+
+		"weapon_anm14"
+		{
+			"weapon_max_subslot"					"0"
+			"weapon_cost"							"1"
+			"weapon_weight"							"8"
+			"class_restricted"						"1"
+		}
+
+		"weapon_m67"
+		{
+			"weapon_max_subslot"					"0"
+			"weapon_cost"							"2"
+			"weapon_weight"							"8"
+			"class_restricted"						"1"
+		}
+
+		"weapon_f1"
+		{
+			"weapon_max_subslot"					"0"
+			"weapon_cost"							"2"
+			"weapon_weight"							"8"
+			"class_restricted"						"1"
+		}
+
+		"weapon_molotov"
+		{
+			"weapon_max_subslot"					"0"
+			"weapon_cost"							"1"
+			"weapon_weight"							"8"
+			"class_restricted"						"1"
+		}
+
+		"weapon_m18"
+		{
+			"weapon_cost"							"1"
+			"weapon_max_subslot"					"2"
+			"weapon_weight"							"8"
+			"class_restricted"						"1"
+		}
+
+		"weapon_m84"
+		{
+			"weapon_cost"							"2"
+			"weapon_max_subslot"					"3"
+			"weapon_weight"							"8"
+			"class_restricted"						"1"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Pistols
+		////////////////////////////////////////////////////////////////
+
+		"weapon_m9"
+		{
+			"class_restricted"						"1"
+			"weapon_cost"							"1"
+			"weapon_weight"							"16"
+			"rounds_per_minute"						"660"
+			"barrel_length"							"16"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.95 1.15"
+				"recoil_vertical_range"				"1.8 2.5"
+				"recoil_aim_punch"					"0.5 0.6"
+				"recoil_rest_rate"					"4"
+				"recoil_rest_delay"					"0.18"
+				"recoil_roll_range"					"-1.35 -1.35"
+				"recoil_roll_rest_rate"				"180"
+				"recoil_shot_reset_time"			"0.75"
+				"recoil_punch_additive_factor"		"0.85"
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_freeaim_frac"				"0.75"
+				"recoil_ironsight_frac"				"0.6"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_pistol_15"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi"
+				"bulletcount"						"1"
+				"maxrange"							"6000"
+			}
+
+			"team_access"							"security, insurgent"
+		}
+
+		"weapon_makarov"
+		{
+			"class_restricted"						"1"
+			"weapon_cost"							"1"
+			"weapon_weight"							"16"
+			"rounds_per_minute"						"660"
+			"barrel_length"							"16"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.95 1.15"
+				"recoil_vertical_range"				"1.8 2.5"
+				"recoil_aim_punch"					"0.5 0.6"
+				"recoil_rest_rate"					"4"
+				"recoil_rest_delay"					"0.18"
+				"recoil_roll_range"					"-1.35 -1.35"
+				"recoil_roll_rest_rate"				"180"
+				"recoil_shot_reset_time"			"0.75"
+				"recoil_punch_additive_factor"		"0.85"
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_freeaim_frac"				"0.75"
+				"recoil_ironsight_frac"				"0.6"
+			}
+
+			"viewmodel_attachments"
+			{
+				"standard_magazine"
+				{
+					"model"							"models/weapons/upgrades/a_magazine_makarov_15.mdl"
+					"fallback_for_slot"				"magazine"
+				}
+			}
+
+			"world_attachments"
+			{
+				"standard_magazine"
+				{
+					"model"							"models/weapons/upgrades/w_magazine_makarov_15.mdl"
+					"fallback_for_slot"				"magazine"
+				}
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_pistol_15"
+				"clip_max"							"10"
+				"clip_max_rounds"					"15"
+				"clip_default"						"2"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi"
+				"bulletcount"						"1"
+				"maxrange"							"6000"
+			}
+
+			"team_access"							"security, insurgent"
+		}
+
+		"weapon_m45"
+		{
+			"class_restricted"						"1"
+			"weapon_cost"							"1"
+			"weapon_weight"							"16"
+			"rounds_per_minute"						"660"
+			"barrel_length"							"16"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.95 1.15"
+				"recoil_vertical_range"				"1.8 2.5"
+				"recoil_aim_punch"					"0.5 0.6"
+				"recoil_rest_rate"					"4"
+				"recoil_rest_delay"					"0.18"
+				"recoil_roll_range"					"-1.35 -1.35"
+				"recoil_roll_rest_rate"				"180"
+				"recoil_shot_reset_time"			"0.75"
+				"recoil_punch_additive_factor"		"0.85"
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_freeaim_frac"				"0.75"
+				"recoil_ironsight_frac"				"0.6"
+			}
+
+			"viewmodel_attachments"
+			{
+				"standard_magazine"
+				{
+					"model"							"models/weapons/upgrades/a_magazine_m45_15.mdl"
+					"fallback_for_slot"				"magazine"
+				}
+			}
+
+			"world_attachments"
+			{
+				"standard_magazine"
+				{
+					"model"							"models/weapons/upgrades/w_magazine_m45_15.mdl"
+					"fallback_for_slot"				"magazine"
+				}
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_pistol_15"
+				"clip_max"							"10"
+				"clip_max_rounds"					"15"
+				"clip_default"						"2"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi"
+				"bulletcount"						"1"
+				"maxrange"							"6000"
+			}
+
+			"team_access"							"security, insurgent"
+		}
+
+		"weapon_m1911"
+		{
+			"class_restricted"						"1"
+			"weapon_cost"							"1"
+			"weapon_weight"							"16"
+			"rounds_per_minute"						"660"
+			"barrel_length"							"16"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.95 1.15"
+				"recoil_vertical_range"				"1.8 2.5"
+				"recoil_aim_punch"					"0.5 0.6"
+				"recoil_rest_rate"					"4"
+				"recoil_rest_delay"					"0.18"
+				"recoil_roll_range"					"-1.35 -1.35"
+				"recoil_roll_rest_rate"				"180"
+				"recoil_shot_reset_time"			"0.75"
+				"recoil_punch_additive_factor"		"0.85"
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_freeaim_frac"				"0.75"
+				"recoil_ironsight_frac"				"0.6"
+			}
+
+			"viewmodel_attachments"
+			{
+				"standard_magazine"
+				{
+					"model"							"models/weapons/upgrades/a_magazine_1911_15.mdl"
+					"fallback_for_slot"				"magazine"
+				}
+			}
+
+			"world_attachments"
+			{
+				"standard_magazine"
+				{
+					"model"							"models/weapons/upgrades/w_magazine_1911_15.mdl"
+					"fallback_for_slot"				"magazine"
+				}
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_pistol_15"
+				"clip_max"							"10"
+				"clip_max_rounds"					"15"
+				"clip_default"						"2"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi"
+				"bulletcount"						"1"
+				"maxrange"							"6000"
+			}
+
+			"team_access"							"security, insurgent"
+		}
+
+		"weapon_model10"
+		{
+			"class_restricted"						"1"
+			"weapon_cost"							"1"
+			"weapon_weight"							"16"
+			"rounds_per_minute"						"660"
+			"barrel_length"							"16"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.95 1.15"
+				"recoil_vertical_range"				"1.8 2.5"
+				"recoil_aim_punch"					"0.5 0.6"
+				"recoil_rest_rate"					"4"
+				"recoil_rest_delay"					"0.18"
+				"recoil_roll_range"					"-1.35 -1.35"
+				"recoil_roll_rest_rate"				"180"
+				"recoil_shot_reset_time"			"0.75"
+				"recoil_punch_additive_factor"		"0.85"
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_freeaim_frac"				"0.75"
+				"recoil_ironsight_frac"				"0.6"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_pistol_6"
+				"clip_max"							"48"
+				"clip_max_rounds"					"6"
+				"clip_default"						"24"
+				"lose_rounds_reload"				"1"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi"
+				"bulletcount"						"1"
+				"maxrange"							"6000"
+				"singleReload"						"1"
+			}
+
+			"team_access"							"security, insurgent"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// SMGs
+		////////////////////////////////////////////////////////////////
+
+		"weapon_mp40"
+		{
+			"weapon_cost"							"6"
+			"weapon_weight"							"80"
+			"rounds_per_minute"						"660"
+			"barrel_length"							"16"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_smg_32"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.70 0.95"
+				"recoil_vertical_range"				"1.7 2.2"
+				"recoil_aim_punch"					"0.4 0.7"
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.15"
+				"recoil_roll_range"					"-1.50 -1.50"
+				"recoil_roll_rest_rate"				"150"
+				"recoil_freeaim_frac"				"0.4"
+
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_shot_reset_time"			"0.5"
+				"recoil_shot_max_shots"				"5"
+				"recoil_punch_additive_factor"		"0.80"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi, full"
+				"bulletcount"						"1"
+				"maxrange"							"8000"
+			}
+		}
+
+		"weapon_ump45"
+		{
+			"weapon_cost"							"6"
+			"weapon_weight"							"80"
+			"rounds_per_minute"						"660"
+			"barrel_length"							"16"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_smg_25"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.70 0.95"
+				"recoil_vertical_range"				"1.7 2.2"
+				"recoil_aim_punch"					"0.4 0.7"
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.15"
+				"recoil_roll_range"					"-1.50 -1.50"
+				"recoil_roll_rest_rate"				"150"
+				"recoil_freeaim_frac"				"0.4"
+
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_shot_reset_time"			"0.5"
+				"recoil_shot_max_shots"				"5"
+				"recoil_punch_additive_factor"		"0.80"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi, full"
+				"bulletcount"						"1"
+				"maxrange"							"8000"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Carbines
+		////////////////////////////////////////////////////////////////
+
+		"weapon_aks74u"
+		{
+			"weapon_cost"							"4"
+			"weapon_weight"							"120"
+			"rounds_per_minute"						"720"
+			"barrel_length"							"18"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_carbine_30"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.8 1.05"
+				"recoil_vertical_range"				"2.0 2.3"
+				"recoil_aim_punch"					"0.4 0.7"
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.12"
+				"recoil_roll_range"					"-1.5 -1.5"
+				"recoil_roll_rest_rate"				"150"
+				"recoil_freeaim_frac"				"0.3"
+
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_shot_reset_time"			"0.5"
+				"recoil_shot_max_shots"				"8"
+				"recoil_punch_additive_factor"		"0.85"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi, full"
+				"bulletcount"						"1"
+				"maxrange"							"10000"
+			}
+		}
+
+		"weapon_m4a1"
+		{
+			"weapon_cost"							"4"
+			"weapon_weight"							"120"
+			"rounds_per_minute"						"720"
+			"barrel_length"							"18"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_carbine_30"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.8 1.05"
+				"recoil_vertical_range"				"2.0 2.3"
+				"recoil_aim_punch"					"0.4 0.7"
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.12"
+				"recoil_roll_range"					"-1.5 -1.5"
+				"recoil_roll_rest_rate"				"150"
+				"recoil_freeaim_frac"				"0.3"
+
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_shot_reset_time"			"0.5"
+				"recoil_shot_max_shots"				"8"
+				"recoil_punch_additive_factor"		"0.85"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi, full"
+				"bulletcount"						"1"
+				"maxrange"							"10000"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Assault Rifles
+		////////////////////////////////////////////////////////////////
+
+		"weapon_m16a4"
+		{
+			"weapon_cost"							"2"
+			"weapon_weight"							"160"
+			"rounds_per_minute"						"660"
+			"barrel_length"							"24"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_assault_rifle_30"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.75 1.00"
+				"recoil_vertical_range"				"2.7 3.1"
+				"recoil_aim_punch"					"0.5 0.8"
+				"recoil_rest_rate"					"7"
+				"recoil_rest_delay"					"0.12"
+				"recoil_roll_range"					"-1.8 -1.8"
+				"recoil_roll_rest_rate"				"190"
+
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_shot_reset_time"			"0.5"
+				"recoil_shot_max_shots"				"6"
+				"recoil_punch_additive_factor"		"0.85"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi, full"
+				"bulletcount"						"1"
+				"maxrange"							"10000"
+			}
+		}
+
+		"weapon_akm"
+		{
+			"weapon_cost"							"2"
+			"weapon_weight"							"160"
+			"rounds_per_minute"						"660"
+			"barrel_length"							"24"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_assault_rifle_30"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.75 1.00"
+				"recoil_vertical_range"				"2.7 3.1"
+				"recoil_aim_punch"					"0.5 0.8"
+				"recoil_rest_rate"					"7"
+				"recoil_rest_delay"					"0.12"
+				"recoil_roll_range"					"-1.8 -1.8"
+				"recoil_roll_rest_rate"				"190"
+
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_shot_reset_time"			"0.5"
+				"recoil_shot_max_shots"				"6"
+				"recoil_punch_additive_factor"		"0.85"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi, full"
+				"bulletcount"						"1"
+				"maxrange"							"10000"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Battle Rifles
+		////////////////////////////////////////////////////////////////
+
+		"weapon_l1a1"
+		{
+			"weapon_cost"							"3"
+			"weapon_weight"							"200"
+			"rounds_per_minute"						"600"
+			"barrel_length"							"28"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_battle_rifle_20"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.3 0.5"
+				"recoil_vertical_range"				"3.6 4.4"
+				"recoil_aim_punch"					"0.6 0.8"
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.1"
+				"recoil_roll_range"					"-2 -2"
+				"recoil_roll_rest_rate"				"200"
+
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_shot_reset_time"			"0.3"
+				"recoil_shot_max_shots"				"6"
+				"recoil_punch_additive_factor"		"0.75"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi"
+				"bulletcount"						"1"
+				"maxrange"							"10000"
+			}
+		}
+
+		"weapon_sks"
+		{
+			"weapon_cost"							"3"
+			"weapon_weight"							"200"
+			"rounds_per_minute"						"600"
+			"barrel_length"							"28"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_battle_rifle_20"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_range"				"-0.3 0.5"
+				"recoil_vertical_range"				"3.6 4.4"
+				"recoil_aim_punch"					"0.6 0.8"
+				"recoil_rest_rate"					"5"
+				"recoil_rest_delay"					"0.1"
+				"recoil_roll_range"					"-2 -2"
+				"recoil_roll_rest_rate"				"200"
+
+				"recoil_additional_rest_per_shot"	"2.5"
+				"recoil_shot_reset_time"			"0.3"
+				"recoil_shot_max_shots"				"6"
+				"recoil_punch_additive_factor"		"0.75"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"semi"
+				"bulletcount"						"1"
+				"maxrange"							"10000"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Sniper Rifles
+		////////////////////////////////////////////////////////////////
+
+		"weapon_m40a1"
+		{
+			"weapon_cost"							"8"
+			"weapon_weight"							"200"
+			"barrel_length"							"32"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_sniper_rifle"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"bolt"
+				"bulletcount"						"1"
+				"maxrange"							"40000"
+				"singleReload"						"1"
+			}
+
+			"viewmodel_attachments"
+			{
+				"Bipod_M40"
+				{
+					"model"							"models/weapons/upgrades/a_bipod_m40.mdl"
+				}
+			}
+
+			"world_attachments"
+			{
+				"underbarrel_bipod_m40"
+				{
+					"model"							"models/weapons/upgrades/w_bipod_m40.mdl"
+				}
+			}
+		}
+
+		"weapon_mosin"
+		{
+			"weapon_cost"							"8"
+			"weapon_weight"							"200"
+			"barrel_length"							"32"
+
+			"player_restrictions"
+			{
+				"allow_jump_shoot"					"0"
+				"allow_reload_sprint"				"1"
+				"allow_reload_jump"					"1"
+				"allow_reload_crawl"				"1"
+			}
+
+			"ammo_clip"
+			{
+				"ammo_type"							"esgl_sniper_rifle"
+			}
+
+			"ballistics"
+			{
+				"spread"							"0.01 0.01 0.01"
+				"FireModes"							"bolt"
+				"bulletcount"						"1"
+				"maxrange"							"40000"
+				"singleReload"						"1"
+			}
+		}
+	}
+
+	"weapon_upgrades"
+	{
+		////////////////////////////////////////////////////////////////
+		// Flashlights
+		////////////////////////////////////////////////////////////////
+
+		"siderail_flashlight_rail"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+		}
+
+		"siderail_flashlight_shotgun"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+		}
+
+		"siderail_flashlight_band"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+		}
+
+		"siderail_flashlight_pistol"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Lazors
+		////////////////////////////////////////////////////////////////
+
+		"siderail_lasersight_rail"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+		}
+
+		"siderail_lasersight_band"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+		}
+
+		"siderail_lasersight_shotgun_sec"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+		}
+
+		"siderail_lasersight_shotgun_ins"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+		}
+
+		"siderail_lasersight_pistol"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Optics
+		////////////////////////////////////////////////////////////////
+
+		"optic_aimpoint"
+		{
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+			"team_access"							"security, insurgent"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_m16a4"
+				"weapon"							"weapon_m4a1"
+				"weapon"							"weapon_l1a1"
+
+				"weapon"							"weapon_akm"
+				"weapon"							"weapon_aks74u"
+				"weapon"							"weapon_sks"
+			}
+		}
+
+		"optic_eotech"
+		{
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+			"team_access"							"security, insurgent"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_m16a4"
+				"weapon"							"weapon_m4a1"
+				"weapon"							"weapon_l1a1"
+				"weapon"							"weapon_ump45"
+
+				"weapon"							"weapon_akm"
+				"weapon"							"weapon_aks74u"
+				"weapon"							"weapon_sks"
+				"weapon"							"weapon_mp40"
+			}
+		}
+
+		"optic_kobra"
+		{
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+			"team_access"							"security, insurgent"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_m16a4"
+				"weapon"							"weapon_m4a1"
+				"weapon"							"weapon_l1a1"
+				"weapon"							"weapon_ump45"
+
+				"weapon"							"weapon_akm"
+				"weapon"							"weapon_aks74u"
+				"weapon"							"weapon_sks"
+				"weapon"							"weapon_mp40"
+			}
+		}
+
+		"optic_2xaimpoint"
+		{
+			"class_restricted"						"1"
+		}
+
+		"optic_elcan"
+		{
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+			"team_access"							"security, insurgent"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_m16a4"
+				"weapon"							"weapon_l1a1"
+
+				"weapon"							"weapon_akm"
+				"weapon"							"weapon_sks"
+			}
+		}
+
+		"optic_po4x24"
+		{
+			"class_restricted"						"1"
+		}
+
+		"optic_scope_mk4"
+        {
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_m40a1"
+			}
+		}
+
+		"optic_scope_7x"
+        {
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_mosin"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Magazines
+		////////////////////////////////////////////////////////////////
+
+		"magazine_extended_pistol"
+		{
+			"class_restricted"						"1"
+		}
+
+		"magazine_extended_rifle_30rd"
+		{
+			"class_restricted"						"1"
+		}
+
+		"magazine_speedloader"
+		{
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Foregrips
+		////////////////////////////////////////////////////////////////
+
+		"underbarrel_foregrip_ins1"
+		{
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.70"
+				"recoil_vertical_frac"				"0.75"
+			}
+
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		"underbarrel_foregrip_ins2"
+		{
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.70"
+				"recoil_vertical_frac"				"0.75"
+			}
+
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		"underbarrel_woodgrip"
+		{
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.70"
+				"recoil_vertical_frac"				"0.75"
+			}
+
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		"underbarrel_foregrip_sec1"
+		{
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.70"
+				"recoil_vertical_frac"				"0.75"
+			}
+
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		"underbarrel_foregrip_sec2"
+		{
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.70"
+				"recoil_vertical_frac"				"0.75"
+			}
+
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Launchers
+		////////////////////////////////////////////////////////////////
+
+		"underbarrel_m203_smoke"
+		{
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_m16a4"
+			}
+		}
+
+		"underbarrel_gp25_smoke"
+		{
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_akm"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Heavy Barrel
+		////////////////////////////////////////////////////////////////
+
+		"barrel_heavybarrel"
+		{
+			"upgrade_cost"							"2"
+			"class_restricted"						"0"
+			"weight"								"0"
+			"team_access"							"security, insurgent"
+
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.80"
+				"recoil_vertical_frac"				"0.85"
+			}
+
+			"sway"
+			{
+				"sway_speed_frac"					"0.4"
+			}
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_m16a4"
+				"weapon"							"weapon_m4a1"
+				"weapon"							"weapon_akm"
+				"weapon"							"weapon_aks74u"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Supressors
+		////////////////////////////////////////////////////////////////
+
+		"barrel_silencer_sec1"
+		{
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+			"length"								"6"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_m16a4"
+				"weapon"							"weapon_m4a1"
+				"weapon"							"weapon_l1a1"
+				"weapon"							"weapon_ump45"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.80"
+				"recoil_vertical_frac"				"0.85"
+			}
+
+			"sway"
+			{
+				"sway_speed_frac"					"0.4"
+			}
+		}
+
+		"barrel_silencer_sec2"
+		{
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+			"length"								"6"
+
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.80"
+				"recoil_vertical_frac"				"0.85"
+			}
+
+			"sway"
+			{
+				"sway_speed_frac"					"0.4"
+			}
+		}
+
+		"barrel_silencer_ins1"
+		{
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+			"length"								"6"
+
+			"allowed_weapons"
+			{
+				"weapon"							"weapon_mp40"
+				"weapon"							"weapon_akm"
+				"weapon"							"weapon_sks"
+				"weapon"							"weapon_aks74u"
+			}
+
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.80"
+				"recoil_vertical_frac"				"0.85"
+			}
+
+			"sway"
+			{
+				"sway_speed_frac"					"0.4"
+			}
+		}
+
+		"barrel_silencer_pistol"
+		{
+			"upgrade_cost"							"0"
+			"class_restricted"						"0"
+			"length"								"4"
+
+			"recoil"
+			{
+				"recoil_lateral_frac"				"0.80"
+				"recoil_vertical_frac"				"0.85"
+			}
+
+			"sway"
+			{
+				"sway_speed_frac"					"0.4"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M45
+		////////////////////////////////////////////////////////////////
+
+		"ammo_hp_m45"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_m45"
+		{
+			"ammo_type_override"					"esgl_pistol_ap_15"
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M9
+		////////////////////////////////////////////////////////////////
+
+		"ammo_hp_m9"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_m9"
+		{
+			"ammo_type_override"					"esgl_pistol_ap_15"
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Makarov
+		////////////////////////////////////////////////////////////////
+
+		"ammo_hp_makarov"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_makarov"
+		{
+			"ammo_type_override"					"esgl_pistol_ap_15"
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Model10
+		////////////////////////////////////////////////////////////////
+
+		"ammo_hp_model10"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_model10"
+		{
+			"ammo_type_override"					"esgl_pistol_ap_6"
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M1911
+		////////////////////////////////////////////////////////////////
+
+		"ammo_hp_m1911"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_m1911"
+		{
+			"ammo_type_override"					"esgl_pistol_ap_15"
+			"upgrade_cost"							"1"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// MP40
+		////////////////////////////////////////////////////////////////
+
+		"ammo_tracer_mp40"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_hp_mp40"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_mp40"
+		{
+			"ammo_type_override"					"esgl_smg_ap_32"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// UMP45
+		////////////////////////////////////////////////////////////////
+
+		"ammo_tracer_ump45"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_hp_ump45"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_ump45"
+		{
+			"ammo_type_override"					"esgl_smg_ap_25"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// AKS74U
+		////////////////////////////////////////////////////////////////
+
+		"ammo_tracer_aks74u"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_hp_aks74u"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_aks74u"
+		{
+			"ammo_type_override"					"esgl_carbine_ap_30"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M4A1
+		////////////////////////////////////////////////////////////////
+
+		"ammo_tracer_m4"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_hp_m4"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_m4"
+		{
+			"ammo_type_override"					"esgl_carbine_ap_30"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M16A4
+		////////////////////////////////////////////////////////////////
+
+		"ammo_tracer_m16a4"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_hp_m16a4"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_m16a4"
+		{
+			"ammo_type_override"					"esgl_assault_rifle_ap_30"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// AKM
+		////////////////////////////////////////////////////////////////
+
+		"ammo_tracer_akm"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_hp_akm"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_akm"
+		{
+			"ammo_type_override"					"esgl_assault_rifle_ap_30"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// L1A1
+		////////////////////////////////////////////////////////////////
+
+		"ammo_tracer_fal"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_hp_fal"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_fal"
+		{
+			"ammo_type_override"					"esgl_battle_rifle_ap_20"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// SKS
+		////////////////////////////////////////////////////////////////
+
+		"ammo_tracer_sks"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_hp_sks"
+		{
+			"class_restricted"						"1"
+		}
+
+		"ammo_ap_sks"
+		{
+			"ammo_type_override"					"esgl_battle_rifle_ap_20"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// M40A1
+		////////////////////////////////////////////////////////////////
+
+		"ammo_ap_m40a1"
+		{
+			"ammo_type_override"					"esgl_sniper_rifle_ap"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Mosin
+		////////////////////////////////////////////////////////////////
+
+		"ammo_ap_mosin"
+		{
+			"ammo_type_override"					"esgl_sniper_rifle_ap"
+			"upgrade_cost"							"4"
+			"class_restricted"						"0"
+		}
+	}
+
+	"player_templates"
+	{
+		////////////////////////////////////////////////////////////////
+		// Security Classes
+		////////////////////////////////////////////////////////////////
+
+		"template_rifleman_security"
+		{
+			"team"									"security"
+			"print_name"							"#Squad_Fireteam_Rifleman"
+
+			"models"
+			{
+				"player"							"models/characters/security_light.mdl"
+				"viewmodel_hands"					"models/weapons/v_hands_sec_l.mdl"
+
+				"bodygroups"
+				{
+					"kit"							"1"
+					"backpack"						"2"
+				}
+			}
+
+			"buy_order"
+			{
+				"weapon"							"weapon_kabar"
+				"gear"								"sec_chest_rig"
+			}
+
+			"allowed_items"
+			{
+				// Primary Weapons
+
+				"weapon"							"weapon_ump45"
+				"weapon"							"weapon_m4a1"
+				"weapon"							"weapon_m16a4"
+				"weapon"							"weapon_l1a1"
+				"weapon"							"weapon_m40a1"
+
+				// Pistols
+
+				"weapon"							"weapon_m9"
+				"weapon"							"weapon_makarov"
+				"weapon"							"weapon_m45"
+				"weapon"							"weapon_m1911"
+				"weapon"							"weapon_model10"
+
+				// Grenades
+
+				"weapon"							"weapon_m67"
+				"weapon"							"weapon_m84"
+				"weapon"							"weapon_m18"
+				"weapon"							"weapon_anm14"
+			}
+		}
+
+		////////////////////////////////////////////////////////////////
+		// Insurgent Classes
+		////////////////////////////////////////////////////////////////
+
+		"template_fighter_insurgent"
+		{
+			"team"									"insurgents"
+			"print_name"							"#Squad_Cell_Fighter"
+
+			"models"
+			{
+				"player"							"models/characters/insurgent_light.mdl"
+				"viewmodel_hands"					"models/weapons/v_hands_ins_l.mdl"
+
+				"bodygroups"
+				{
+					"kit"							"1"
+					"backpack"						"2"
+				}
+			}
+
+			"buy_order"
+			{
+				"weapon"							"weapon_gurkha"
+				"gear"								"ins_chest_rig"
+			}
+
+			"allowed_items"
+			{
+				// Primary Weapons
+
+				"weapon"							"weapon_mp40"
+				"weapon"							"weapon_aks74u"
+				"weapon"							"weapon_akm"
+				"weapon"							"weapon_sks"
+				"weapon"							"weapon_mosin"
+
+				// Pistols
+
+				"weapon"							"weapon_m9"
+				"weapon"							"weapon_makarov"
+				"weapon"							"weapon_m45"
+				"weapon"							"weapon_m1911"
+				"weapon"							"weapon_model10"
+
+				// Grenades
+
+				"weapon"							"weapon_f1"
+				"weapon"							"weapon_m84"
+				"weapon"							"weapon_m18"
+				"weapon"							"weapon_molotov"
+			}
+		}
+	}
+
+	"teams"
+	{
+		"security"
+		{
+			"name"									"#Team_Security"
+			"logo"									"gameui/fac_sec"
+
+			"squads"
+			{
+				"esgl"
+				{
+					"#Squad_Fireteam_Rifleman"		"template_rifleman_security"
+					"#Squad_Fireteam_Rifleman"		"template_rifleman_security"
+					"#Squad_Fireteam_Rifleman"		"template_rifleman_security"
+					"#Squad_Fireteam_Rifleman"		"template_rifleman_security"
+					"#Squad_Fireteam_Rifleman"		"template_rifleman_security"
+				}
+			}
+		}
+
+		"insurgents"
+		{
+			"name"									"#Team_Insurgent"
+			"logo"									"gameui/fac_ins"
+
+			"squads"
+			{
+				"esgl"
+				{
+					"#Squad_Cell_Fighter"			"template_fighter_insurgent"
+					"#Squad_Cell_Fighter"			"template_fighter_insurgent"
+					"#Squad_Cell_Fighter"			"template_fighter_insurgent"
+					"#Squad_Cell_Fighter"			"template_fighter_insurgent"
+					"#Squad_Cell_Fighter"			"template_fighter_insurgent"
+				}
+			}
+		}
+	}
+}
