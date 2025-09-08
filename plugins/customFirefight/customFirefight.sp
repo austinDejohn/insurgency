@@ -10,7 +10,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define VERSION "0.3.5"
+#define VERSION "0.3.6"
 
 #define FIREFIGHT "firefight"
 
@@ -177,7 +177,7 @@ public bool LoadCfg() {
 	char cfg[ML_CFG_NAME];
 	cfg_name.GetString(cfg, ML_CFG_NAME);
 
-	if (IsModeSupported(cfg)) {
+	if (IsCustomModeSupported(cfg)) {
 		char mapCfg[PLATFORM_MAX_PATH];
 		GetMap(mapCfg);
 		BuildPath(Path_SM, mapCfg, PLATFORM_MAX_PATH, "configs/customFirefight/%s/%s.cfg", cfg, mapCfg);
@@ -297,11 +297,16 @@ public void ClearTimers() {
 	if (roundTimeHandle != null) { delete roundTimeHandle; }
 }
 
-public bool IsModeSupported(const char[] mode) {
-	if (strlen(mode) == 0 || StrEqual(mode, FIREFIGHT, false)) { return false; }
-	char modeDir[PLATFORM_MAX_PATH];
+public bool IsCustomModeSupported(const char[] mode) {
+    char modeDir[PLATFORM_MAX_PATH];
 	BuildPath(Path_SM, modeDir, PLATFORM_MAX_PATH, "configs/customFirefight/%s", mode);
 	return DirExists(modeDir);
+}
+
+public bool IsModeSupported(const char[] mode) {
+	if (strlen(mode) == 0) { return false; }
+	if (StrEqual(mode, FIREFIGHT, false)) { return true; }
+	return IsCustomModeSupported(mode);
 }
 
 public void InitializeMap() {
@@ -609,3 +614,4 @@ public bool CanChangeMode() {
 	if (!usingMatchBot) { return true; }
 	return matchBot.isWarmup;
 }
+
