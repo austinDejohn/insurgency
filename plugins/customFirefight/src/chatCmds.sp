@@ -5,7 +5,7 @@ public void createChatCmds() {
         onVoteMode,
         onVoteModeSuccess,
         "<name>",
-        "Starts a vote to switch the server to the specified custom firefight mode",
+        "Starts a vote to switch the server to the specified custom firefight mode (or 'firefight' for standard)",
         "change the mode to",
         false,
         0.51,
@@ -32,4 +32,5 @@ public bool onVoteMode(int client, VoteCmd cmd, char[] args, int argsLength) {
 
 public void onVoteModeSuccess(int client, VoteCmd cmd, const char[] args) {
     cfg_name.SetString(args);
+
 }
