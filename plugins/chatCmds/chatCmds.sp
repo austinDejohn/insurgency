@@ -141,7 +141,7 @@ public Action OnClientSayCommand(int client, const char[] command, const char[] 
     ChatCmd cmd = getCmd(msg[0]);
 
     if (cmd.isValid) {
-        if (cmd.access & getClientAccess(client)) {
+        if (cmd.access & getClientAccess(client) != 0) {
             if (cmd.isEnabled) {
                 DataPack data = new DataPack();
 
@@ -233,4 +233,5 @@ public void setVoteQuorumHook(ConVar convar, const char[] oldValue, const char[]
     if (cmd.isValid && cmd.isVote) {
         view_as<VoteCmd>(cmd).quorumRatio = ratio;
     }
+
 }
