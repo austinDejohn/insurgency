@@ -13,7 +13,7 @@ public bool isAdmin(int client) {
 
 public CmdAccess getClientAccess(int client) {
     CmdAccess flags = isSpectator(client) ? CmdAccess_Spectator : CmdAccess_Player;
-    if (isAdmin(client)) { flags &= CmdAccess_Admin; }
+    if (isAdmin(client)) { flags |= CmdAccess_Admin; }
     return flags;
 }
 
@@ -122,4 +122,5 @@ public void fakeMsg(int client, const char[] msg, any ...) {
 
         EndMessage();
     }
+
 }
