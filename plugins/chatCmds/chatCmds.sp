@@ -9,7 +9,7 @@
 
 #define PLUGIN_NAME "ChatCmds"
 #define PLUGIN_AUTHOR "Outlawled"
-#define PLUGIN_VERSION "2.0.0"
+#define PLUGIN_VERSION "2.0.1"
 
 #define CMD_SYMBOL '.'
 
@@ -235,3 +235,4 @@ public void setVoteQuorumHook(ConVar convar, const char[] oldValue, const char[]
     }
 
 }
+
